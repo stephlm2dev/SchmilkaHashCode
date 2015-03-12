@@ -1,0 +1,5 @@
+# Ignore the _build directory
+_build/
+
+# Ignore native file
+*.native
