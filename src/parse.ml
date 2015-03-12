@@ -6,18 +6,6 @@ type datacenter = {
   available_servers: int;
 }
 
-type occuped_location = {
-  index: int;
-    r_i: int;
-    s_i: int;
-}
-
-type available_servers = {
-        index: int;
-  nb_location: int;
-     capacity: int;
-}
-
 let main =
   let split = Str.split (Str.regexp_string " ") in
   let read_input_file file = 
@@ -45,18 +33,18 @@ let main =
     let get_info position el =
       let split_data = split el in
       if position < nb_occuped then
-        let occuped_location = {
-          index = position;
-            r_i = int_of_string (List.nth split_data 0);
-            s_i = int_of_string (List.nth split_data 1);
-        } in
+        let occuped_location = (
+          position,
+          int_of_string (List.nth split_data 0),
+          int_of_string (List.nth split_data 1)
+        ) in
         occuped_locations :=  occuped_location :: !occuped_locations
       else 
-        let available_server = {
-                index = position;
-          nb_location = int_of_string (List.nth split_data 0);
-             capacity = int_of_string (List.nth split_data 1);
-        } in
+        let available_server = (
+          position, 
+          int_of_string (List.nth split_data 0),
+          int_of_string (List.nth split_data 1)
+        ) in
         available_servers :=  available_server :: !available_servers
     in
     let _ = List.iteri get_info data in
@@ -66,13 +54,5 @@ let main =
     let datacenter_meta = retrieve_datacenter_information (List.hd data) in
     let (occuped_locations, available_servers) =
       additional_information (List.tl data) datacenter_meta.occuped_location in
-    let first_occuped = List.hd occuped_locations and
-         first_server = List.hd available_servers in
-    Printf.printf "%i %i %i | %i %i %i" 
-      first_occuped.index
-      first_occuped.r_i
-      first_occuped.s_i
-      first_server.index
-      first_server.capacity
-      first_server.nb_location
+    Printf.printf "Finish" 
 ;;
