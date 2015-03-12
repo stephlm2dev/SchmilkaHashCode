@@ -54,5 +54,10 @@ let main =
     let datacenter_meta = retrieve_datacenter_information (List.hd data) in
     let (occuped_locations, available_servers) =
       additional_information (List.tl data) datacenter_meta.occuped_location in
-    Printf.printf "Finish" 
+    Sort.affect
+       datacenter_meta.row
+       datacenter_meta.location_per_row
+       datacenter_meta.available_groups
+       occuped_locations
+       available_servers
 ;;
