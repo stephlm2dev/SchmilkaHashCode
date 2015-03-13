@@ -7,3 +7,5 @@ Participants: Quentin BOUILLAGET and Stéphane SCHMIDELY
 Source code written in OCaml  
 [Hash Code by Google France](https://sites.google.com/site/hashcode2015/home)
 
+Application not finished !
+
