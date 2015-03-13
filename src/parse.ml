@@ -53,11 +53,14 @@ let main =
     let data = read_input_file "dc.in" in
     let datacenter_meta = retrieve_datacenter_information (List.hd data) in
     let (occuped_locations, available_servers) =
-      additional_information (List.tl data) datacenter_meta.occuped_location in
+      additional_information (List.tl data) datacenter_meta.occuped_location 
+    (* in
     Sort.affect
        datacenter_meta.row
        datacenter_meta.location_per_row
        datacenter_meta.available_groups
        occuped_locations
        available_servers
+    *)
+    in Printf.sprintf "Sort not finished"
 ;;
